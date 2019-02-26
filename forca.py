@@ -11,6 +11,9 @@ def jogar():
         print('Tentativas restantes: {}'.format(tentativas))
         print('Palavra: {}'.format(palavra_chute))
         chute = input('Digite uma letra: ').lower().strip()
+        if(len(chute) <> 1):
+            print('Digite uma, e somente uma letra!')
+            continue
         
         lista_chute = list(palavra_chute)
         
