@@ -1,37 +1,36 @@
 def jogar():
-    print("*********************************")
-    print("***Bem vindo ao jogo da Forca!***")
-    print("*********************************")
-    
-    palavra_secreta = 'python'
-    palavra_chute = '_' * len(palavra_secreta)
+    print('*********************************')
+    print("** bem-vindo ao jogo de forca! **")
+    print('*********************************')
+
+    palavra_secreta = 'banana'
     tentativas = 5
-    
-    while(palavra_secreta != palavra_chute and tentativas > 0):
-        print('Tentativas restantes: {}'.format(tentativas))
-        print('Palavra: {}'.format(palavra_chute))
-        chute = input('Digite uma letra: ').lower().strip()
-        if(len(chute) <> 1):
-            print('Digite uma, e somente uma letra!')
-            continue
-        
+    palavra_chute = '_' * len(palavra_secreta)
+
+    print('palavra a ser adivinhada: {}, possui {} letras'.format(palavra_chute, len(palavra_chute)))
+
+    while(palavra_chute != palavra_secreta and tentativas > 0):
+        print('Letras acertadas: {}'.format(palavra_chute))
+
         lista_chute = list(palavra_chute)
-        
+
+        chute = input('Dê seu chute: ').lower().strip()
+
         if(chute in palavra_secreta):
             for i in range(0,len(palavra_secreta)):
-                if(palavra_secreta[i] == chute):
+                if(chute == palavra_secreta[i]):
                     lista_chute[i] = chute
         else:
-            tentativas -= 1
-            
-        palavra_chute = ''.join(lista_chute)
-       
-    if(tentativas == 0):
-        print('Enforcou!')
-    elif(palavra_secreta == palavra_chute):
-        print('Parabéns vc acertou a palavra: {}'.format(palavra_chute))
-    
-    print("Fim do jogo")
+          tentativas -= 1
+        print('Você errou! Tentativas restantes: {}'.format(tentativas))
 
-if(__name__ == "__main__"):
+        palavra_chute = ''.join(lista_chute)
+
+        if(palavra_chute == palavra_secreta):
+            print('Você acertou a palavra {}'.format(palavra_chute))
+
+    print('Fim do Jogo')
+
+
+if(__name__ == '__main__'):
     jogar()
