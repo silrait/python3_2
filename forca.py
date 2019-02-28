@@ -7,7 +7,7 @@ def imprime_apresentacao():
     print("*********************************")
 
 
-def selecionar_palavra(nome_arquivo):
+def selecionar_palavra(nome_arquivo='palavras.txt'):
     palavras = []
     with open(nome_arquivo, 'r') as arquivo:
         for linha in arquivo:
@@ -57,10 +57,62 @@ def exibir_resultado_jogo(informacoes_do_jogo):
     print("Fim do jogo")
 
 
+def desenha_forca(erros):
+    print("  _______     ")
+    print(" |/      |    ")
+
+    if(erros == 1):
+        print(" |      (_)   ")
+        print(" |            ")
+        print(" |            ")
+        print(" |            ")
+
+    if(erros == 2):
+        print(" |      (_)   ")
+        print(" |      \     ")
+        print(" |            ")
+        print(" |            ")
+
+    if(erros == 3):
+        print(" |      (_)   ")
+        print(" |      \|    ")
+        print(" |            ")
+        print(" |            ")
+
+    if(erros == 4):
+        print(" |      (_)   ")
+        print(" |      \|/   ")
+        print(" |            ")
+        print(" |            ")
+
+    if(erros == 5):
+        print(" |      (_)   ")
+        print(" |      \|/   ")
+        print(" |       |    ")
+        print(" |            ")
+
+    if(erros == 6):
+        print(" |      (_)   ")
+        print(" |      \|/   ")
+        print(" |       |    ")
+        print(" |      /     ")
+
+    if (erros == 7):
+        print(" |      (_)   ")
+        print(" |      \|/   ")
+        print(" |       |    ")
+        print(" |      / \   ")
+
+    print(" |            ")
+    print("_|___         ")
+    print()
+
+
 def exibir_resultado_rodada(informacoes_do_jogo):
     palavra_chute = ''.join(informacoes_do_jogo['lista_chute'])
     print('Tentativas restantes: {}'.format(informacoes_do_jogo['tentativas']))
     print('Palavra: {}'.format(palavra_chute))
+    desenha_forca(7 - informacoes_do_jogo['tentativas'])
 
 
 def valida_condicoes(informacoes_do_jogo):
@@ -92,7 +144,7 @@ def verifica_chute(informacoes_do_jogo):
 def jogar():
     imprime_apresentacao()
 
-    informacoes_do_jogo = dict(palavra_secreta=selecionar_palavra('arquivo.txt'), tentativas=5)
+    informacoes_do_jogo = dict(palavra_secreta=selecionar_palavra('arquivo.txt'), tentativas=7)
     informacoes_do_jogo['lista_chute'] = ['_' for letra in informacoes_do_jogo['palavra_secreta']]
 
     while (valida_condicoes(informacoes_do_jogo)):
