@@ -1,11 +1,10 @@
 import random
 
 def selecionar_palavra(nome_arquivo):
-    arquivo = open(nome_arquivo, 'r')
     palavras = []
-    for linha in arquivo:
-        palavras.append(linha.strip())
-    arquivo.close()
+    with open(nome_arquivo, 'r') as arquivo:
+        for linha in arquivo:
+            palavras.append(linha.strip())
     
     return palavras[ random.randrange(0, len(palavras))]
 
